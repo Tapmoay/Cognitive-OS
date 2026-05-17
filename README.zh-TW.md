@@ -126,20 +126,39 @@ Skill 層（對話引導 + 狀態路由）
 | `/cognitive-db` | 查詢認知資料庫 | 記錄者 |
 | `/cognitive-dashboard` | 產生儀表板 | 思考者 |
 
-## 快速開始
+## 快速部署
+
+### Claude Code 使用者
+
+開啟 Claude Code，貼上以下指令：
+
+```
+複製 https://github.com/Tapmoay/Cognitive-OS 到我指定的目錄，然後將 agents/ 目錄下的所有 .md 檔案複製到 ~/.claude/agents/，再執行 setup.ps1 初始化 vault。完成後告訴我可以用 /cognitive 開始。
+```
+
+### Codex 使用者
+
+開啟 Codex，貼上以下指令：
+
+```
+複製 https://github.com/Tapmoay/Cognitive-OS 並部署：將 agents/ 目錄下所有檔案複製到 ~/.claude/agents/，然後執行安裝腳本初始化 vault 目錄結構。完成後確認。
+```
+
+### 手動安裝
 
 ```bash
 # 1. 複製儲存庫
 git clone https://github.com/Tapmoay/Cognitive-OS.git
 cd Cognitive-OS
 
-# 2. 執行安裝
+# 2. 安裝 agents
+mkdir -p ~/.claude/agents && cp agents/*.md ~/.claude/agents/
+
+# 3. 執行安裝（Windows）
 .\setup.ps1
 
-# 3. 啟動 Claude Code
+# 4. 啟動並開始
 claude
-
-# 4. 開始使用
 /cognitive
 ```
 

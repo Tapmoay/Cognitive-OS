@@ -28,6 +28,22 @@ Cognitive OS 是一個運行在 Claude Code 中的認知作業系統。它幫你
 
 ## 安裝
 
+### 方式零：AI 指令部署（最快）
+
+直接把下面的指令複製貼上到你的 AI 工具中，它會自動幫你完成所有操作：
+
+**Claude Code 使用者**，開啟 Claude Code 後貼上：
+
+```
+複製 https://github.com/Tapmoay/Cognitive-OS 到我指定的目錄，然後將 agents/ 目錄下的所有 .md 檔案複製到 ~/.claude/agents/，再執行 setup.ps1 初始化 vault。完成後告訴我可以用 /cognitive 開始。
+```
+
+**Codex 使用者**，開啟 Codex 後貼上：
+
+```
+複製 https://github.com/Tapmoay/Cognitive-OS 並部署：將 agents/ 目錄下所有檔案複製到 ~/.claude/agents/，然後執行安裝腳本初始化 vault 目錄結構。完成後確認。
+```
+
 ### 方式一：一鍵安裝
 
 ```powershell

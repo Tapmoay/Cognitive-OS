@@ -126,20 +126,39 @@ Storage Layer (Markdown + Obsidian wikilinks)
 | `/cognitive-db` | Query cognitive database | Recorder |
 | `/cognitive-dashboard` | Generate dashboard | Thinker |
 
-## Quick Start
+## Quick Deploy
+
+### For Claude Code Users
+
+Open Claude Code and paste this instruction:
+
+```
+Clone https://github.com/Tapmoay/Cognitive-OS to a directory of my choice, then install all agents by copying agents/*.md to ~/.claude/agents/, and initialize the vault by running setup.ps1. After setup is complete, tell me I can start with /cognitive.
+```
+
+### For Codex Users
+
+Open Codex and paste this instruction:
+
+```
+Clone https://github.com/Tapmoay/Cognitive-OS and deploy it: copy all files from agents/ to ~/.claude/agents/, then run the setup script to initialize the vault directory structure. Confirm when ready.
+```
+
+### Manual Setup
 
 ```bash
 # 1. Clone the repo
 git clone https://github.com/Tapmoay/Cognitive-OS.git
 cd Cognitive-OS
 
-# 2. Run installation
+# 2. Install agents
+mkdir -p ~/.claude/agents && cp agents/*.md ~/.claude/agents/
+
+# 3. Run setup (Windows)
 .\setup.ps1
 
-# 3. Start Claude Code
+# 4. Start Claude Code and begin
 claude
-
-# 4. Begin
 /cognitive
 ```
 

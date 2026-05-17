@@ -28,6 +28,22 @@ The entire system uses **conversation** as its core interaction — just speak, 
 
 ## Installation
 
+### Option 0: AI Command Deploy (Fastest)
+
+Copy and paste the instruction below into your AI tool — it will handle everything automatically:
+
+**For Claude Code users**, open Claude Code and paste:
+
+```
+Clone https://github.com/Tapmoay/Cognitive-OS to a directory of my choice, then install all agents by copying agents/*.md to ~/.claude/agents/, and initialize the vault by running setup.ps1. After setup is complete, tell me I can start with /cognitive.
+```
+
+**For Codex users**, open Codex and paste:
+
+```
+Clone https://github.com/Tapmoay/Cognitive-OS and deploy it: copy all files from agents/ to ~/.claude/agents/, then run the setup script to initialize the vault directory structure. Confirm when ready.
+```
+
 ### Option 1: One-Click Install
 
 ```powershell
