@@ -1,5 +1,7 @@
 # Cognitive OS 使用指南
 
+[简体中文](GUIDE.md) | [繁體中文](docs/zh-tw/GUIDE.md) | [English](docs/en/GUIDE.md)
+
 ## 这是什么
 
 Cognitive OS 是一个运行在 Claude Code 中的认知操作系统。它帮你：
