@@ -243,8 +243,8 @@ date: YYYY-MM-DD
 reason_type: [emotion|failure|stuck]
 frequency: 1
 related_methods: []
-source_session: []
 tags: [#reason/[类别]]
+source_session: []
 ---
 
 ## 原因：[名称]
@@ -271,8 +271,8 @@ category: how-methods
 date: YYYY-MM-DD
 method_type: [thinking|behavior|coping|strategy]
 applicable_reasons: []
-source_session: []
 tags: [#method/[类别]]
+source_session: []
 ---
 
 ## 方法：[名称]
@@ -301,8 +301,8 @@ date: YYYY-MM-DD
 model_type: [behavioral|emotional|cognitive]
 source_reasons: []
 source_methods: []
-source_session: []
 tags: [#model/[类别]]
+source_session: []
 ---
 
 ## 个人规律：[名称]
@@ -328,8 +328,8 @@ category: decision-frameworks
 date: YYYY-MM-DD
 framework_type: [daily|crisis|planning|relationship]
 source_methods: []
-source_session: []
 tags: [#framework/[类别]]
+source_session: []
 ---
 
 ## 个人策略：[名称]
@@ -361,8 +361,8 @@ event_type: [turning-point|high-impact|recurring-milestone]
 intensity: [1-10]
 related_reasons: []
 related_methods: []
-source_session: []
 tags: [#event/[类别]]
+source_session: []
 ---
 
 ## 事件：[名称]
@@ -385,7 +385,22 @@ tags: [#event/[类别]]
 ### 后续行动
 - [ ] [待跟进事项]
 "@
-    "sessions\_template.md" = @"
+}
+
+foreach ($file in $templates.Keys) {
+    $filePath = "$VaultPath\cognitive-db\$file"
+    if (-not (Test-Path $filePath)) {
+        $templates[$file] | Out-File -FilePath $filePath -Encoding utf8
+        Write-Host "  创建: cognitive-db\$file" -ForegroundColor Gray
+    } else {
+        Write-Host "  已存在: cognitive-db\$file (跳过)" -ForegroundColor DarkGray
+    }
+}
+
+# sessions template (separate from cognitive-db)
+$sessionTemplatePath = "$VaultPath\sessions\_template.md"
+if (-not (Test-Path $sessionTemplatePath)) {
+    @"
 ---
 type: session
 date: YYYY-MM-DD
@@ -419,17 +434,10 @@ tags: [#session, #emotion/[情绪], #topic/[主题]]
 > **系统**: [回复]
 
 （完整对话原文）
-"@
-}
-
-foreach ($file in $templates.Keys) {
-    $filePath = "$VaultPath\cognitive-db\$file"
-    if (-not (Test-Path $filePath)) {
-        $templates[$file] | Out-File -FilePath $filePath -Encoding utf8
-        Write-Host "  创建: cognitive-db\$file" -ForegroundColor Gray
-    } else {
-        Write-Host "  已存在: cognitive-db\$file (跳过)" -ForegroundColor DarkGray
-    }
+"@ | Out-File -FilePath $sessionTemplatePath -Encoding utf8
+    Write-Host "  创建: sessions\_template.md" -ForegroundColor Gray
+} else {
+    Write-Host "  已存在: sessions\_template.md (跳过)" -ForegroundColor DarkGray
 }
 
 # 4. 复制 Skills 和 Agents

@@ -77,6 +77,7 @@ tags: [#emotion/[情绪], #pattern/[模式], #belief/[信念], ...]
 suspected_pattern: [true|false]
 pattern_confidence: [high|low]
 pattern_dimensions: [trigger, emotion, belief]
+source_session: []
 ---
 
 ## 当前情绪
@@ -93,6 +94,10 @@ pattern_dimensions: [trigger, emotion, belief]
 - 在"关键对话摘要"中，用 `[[信念名称]]` 链接核心信念，用 `[[模式名称]]` 链接认知模式
 - 信念名称从 TEBAR 分析的 belief 环节提取
 - 模式名称从 Pattern Engine 确认的模式或 cognitive-db 中已有模式提取
+
+**会话反链规则**:
+- 在 `source_session` 字段中，用 `[[session-name]]` 链接本次对话的会话文件
+- 会话文件名格式：`YYYY-MM-DD-{主题摘要}`（不含 .md 后缀）
 
 **标签规则**:
 - `tags` 字段必须包含结构化标签，格式：`#category/值`
@@ -149,6 +154,7 @@ first_seen: [首次出现日期]
 frequency: [出现次数]
 category: recurring-pattern
 tags: [#pattern/[模式], #emotion/[情绪], #belief/[信念], ...]
+source_sessions: []
 ---
 
 ## 重复模式：[[模式名称]]
@@ -171,6 +177,10 @@ tags: [#pattern/[模式], #emotion/[情绪], #belief/[信念], ...]
 - 模式名称用 `[[双链]]` 包裹，与 cognitive-db 中对应条目互链
 - 核心信念用 `[[信念]]` 链接，与短期记忆和 cognitive-db 中的信念互链
 - 触发事件和关联行动用 `[[双链]]` 链接
+
+**会话反链规则**:
+- 在 `source_sessions` 字段中，列出促成此模式的所有会话文件，用 `[[session-name]]` 链接
+- 数组格式：`source_sessions: [[[session-1]], [[session-2]], [[session-3]]]`
 
 ### 3. 用户画像更新
 
@@ -213,6 +223,7 @@ reason_type: [emotion|failure|stuck]
 frequency: 1
 related_methods: []
 tags: [#reason/[类别]]
+source_session: []
 ---
 
 ## 原因：[名称]
@@ -256,6 +267,7 @@ date: YYYY-MM-DD
 method_type: [thinking|behavior|coping|strategy]
 applicable_reasons: []
 tags: [#method/[类别]]
+source_session: []
 ---
 
 ## 方法：[名称]
@@ -320,6 +332,7 @@ intensity: [1-10]
 related_reasons: []
 related_methods: []
 tags: [#event/[类别]]
+source_session: []
 ---
 
 ## 事件：[名称]
