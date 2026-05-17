@@ -13,6 +13,48 @@ model: sonnet
 
 ## 核心职责
 
+### 0. 会话保存
+
+当本次对话产生了认知产出时，**在写入任何存储层之前**，先保存会话文件到 `sessions/` 目录。
+
+**触发条件**（满足任一即保存）：
+1. 将要写入短期记忆
+2. 将要升级为长期记忆
+3. 将要写入认知数据库（why-reasons / how-methods / cognitive-models / decision-frameworks / events）
+4. 对话中发生了状态转换（如 EMOTION_RELEASE → PROBLEM_EXPLORATION）
+
+**保存流程**：
+1. 确定会话文件名：`sessions/YYYY-MM-DD-{主题摘要}.md`
+   - 主题摘要从对话核心话题提取，2-4 个中文词或英文短横线连接
+   - 如果同名文件已存在，追加序号：`YYYY-MM-DD-{主题摘要}-2`
+2. 生成 session_id：`session-YYYYMMDD-NNN`
+   - NNN 为当日序号，从 `001` 开始，扫描 `sessions/` 中当日已有文件数递增
+3. 填写 frontmatter：
+   - `emotion`: 本次对话主导情绪
+   - `intensity`: 主导情绪强度 1-10
+   - `topics`: 话题标签数组
+   - `state_path`: 本次对话经历的状态转换路径
+   - `related_memory`: 将要写入的记忆文件 `[[wikilinks]]`
+   - `related_cognitive`: 将要写入的认知数据库条目 `[[wikilinks]]`
+   - `tags`: 必须包含 `#session`
+4. 生成结构化摘要（1-3 段）：
+   - 对话围绕什么展开
+   - 情绪如何变化
+   - 识别出什么核心问题
+   - 提炼的关键洞察（列表）
+   - 行动项（checkbox 列表）
+5. 附加完整对话原文：
+   - 格式：`> **用户**: <消息>` 和 `> **系统**: <回复>`
+   - 保留对话的完整上下文
+6. 使用 Write 工具写入文件
+7. 记录会话文件名，用于后续存储层的 `source_session` 字段
+
+**不保存的情况**：
+- 对话纯属闲聊，不产生任何认知产出
+- 对话未触发上述任何存储操作
+
+**重要**：会话保存必须在存储写入之前完成，确保 `source_session` 字段可以正确引用会话文件。
+
 ### 1. 短期记忆写入
 
 当收到对话内容需要记录时，写入短期记忆：
@@ -309,6 +351,7 @@ tags: [#event/[类别]]
 ## 输入格式
 
 你将收到一段对话内容和操作指令。指令可能是：
+- `save-session` — 保存会话文件到 sessions/
 - `store-short-term` — 存入短期记忆
 - `promote-long-term` — 升级为长期记忆
 - `update-profile` — 更新用户画像
