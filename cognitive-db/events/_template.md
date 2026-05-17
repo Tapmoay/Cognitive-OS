@@ -7,6 +7,7 @@ intensity: [1-10]
 related_reasons: []
 related_methods: []
 tags: [#event/[类别]]
+source_session: []
 ---
 
 ## 事件：[名称]

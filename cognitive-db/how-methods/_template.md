@@ -5,6 +5,7 @@ date: YYYY-MM-DD
 method_type: [thinking|behavior|coping|strategy]
 applicable_reasons: []
 tags: [#method/[类别]]
+source_session: []
 ---
 
 ## 方法：[名称]

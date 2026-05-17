@@ -5,6 +5,7 @@ date: YYYY-MM-DD
 framework_type: [daily|crisis|planning|relationship]
 source_methods: []
 tags: [#framework/[类别]]
+source_session: []
 ---
 
 ## 个人策略：[名称]

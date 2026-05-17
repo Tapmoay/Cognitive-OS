@@ -6,6 +6,7 @@ reason_type: [emotion|failure|stuck]
 frequency: 1
 related_methods: []
 tags: [#reason/[类别]]
+source_session: []
 ---
 
 ## 原因：[名称]

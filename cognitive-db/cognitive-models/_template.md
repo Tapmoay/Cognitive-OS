@@ -6,6 +6,7 @@ model_type: [behavioral|emotional|cognitive]
 source_reasons: []
 source_methods: []
 tags: [#model/[类别]]
+source_session: []
 ---
 
 ## 个人规律：[名称]
