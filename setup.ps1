@@ -38,6 +38,7 @@ $dirs = @(
     "$VaultPath\cognitive-db\cognitive-models",
     "$VaultPath\cognitive-db\decision-frameworks",
     "$VaultPath\cognitive-db\events",
+    "$VaultPath\sessions",
     "$VaultPath\actions",
     "$VaultPath\.claude\commands"
 )
@@ -91,7 +92,7 @@ tags: []
 
 ## 核心信念
 - [[信念1]] #belief/[类别]
-- （从 TEBAR 分析中提取，用 [[双链]] 链接，添加 #belief/ 标签）
+- （从 TEBAR 分析中提取，用 [[双链]] 链接，添加 #belief/ 标签，可用 [[session-name]] 引用来源会话）
 - 信念被推翻时标记：~~[[旧信念]]~~ ← [日期] 已推翻 #growth/里程碑
 
 ## 决策偏好
@@ -103,7 +104,7 @@ tags: []
 
 ## 反模式（反复踩的坑）
 - [[反模式1]] #antipattern/[类别]
-- （从 why-reasons 高频条目中提炼）
+- （从 why-reasons 高频条目中提炼，可用 [[session-name]] 引用来源会话）
 
 ## 人生使命与长期愿景
 - （深度反思中浮现，不在首次引导时收集）
@@ -242,6 +243,7 @@ date: YYYY-MM-DD
 reason_type: [emotion|failure|stuck]
 frequency: 1
 related_methods: []
+source_session: []
 tags: [#reason/[类别]]
 ---
 
@@ -269,6 +271,7 @@ category: how-methods
 date: YYYY-MM-DD
 method_type: [thinking|behavior|coping|strategy]
 applicable_reasons: []
+source_session: []
 tags: [#method/[类别]]
 ---
 
@@ -298,6 +301,7 @@ date: YYYY-MM-DD
 model_type: [behavioral|emotional|cognitive]
 source_reasons: []
 source_methods: []
+source_session: []
 tags: [#model/[类别]]
 ---
 
@@ -324,6 +328,7 @@ category: decision-frameworks
 date: YYYY-MM-DD
 framework_type: [daily|crisis|planning|relationship]
 source_methods: []
+source_session: []
 tags: [#framework/[类别]]
 ---
 
@@ -356,6 +361,7 @@ event_type: [turning-point|high-impact|recurring-milestone]
 intensity: [1-10]
 related_reasons: []
 related_methods: []
+source_session: []
 tags: [#event/[类别]]
 ---
 
@@ -378,6 +384,41 @@ tags: [#event/[类别]]
 
 ### 后续行动
 - [ ] [待跟进事项]
+"@
+    "sessions\_template.md" = @"
+---
+type: session
+date: YYYY-MM-DD
+session_id: session-YYYYMMDD-NNN
+emotion: [主导情绪]
+intensity: [1-10]
+topics: [[主题1, 主题2]]
+state_path: [ENTRY_RECORD → ... → 最终状态]
+related_memory: []
+related_cognitive: []
+tags: [#session, #emotion/[情绪], #topic/[主题]]
+---
+
+## 摘要
+
+[1-3 段结构化摘要：本次对话围绕什么展开，情绪如何变化，识别出什么核心问题]
+
+关键洞察：
+- [洞察1]
+- [洞察2]
+
+行动项：
+- [ ] [行动1]
+- [ ] [行动2]
+
+---
+
+## 完整对话
+
+> **用户**: [消息]
+> **系统**: [回复]
+
+（完整对话原文）
 "@
 }
 
