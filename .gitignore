@@ -1,0 +1,22 @@
+# Obsidian workspace (user-specific)
+.obsidian/
+
+# Superpowers brainstorm cache
+.superpowers/
+
+# Claude Code project memory (personal, per-machine)
+.claude/memory/
+
+# Scratch files
+01.md
+02.md
+03.md
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Screenshots and temp files
+*.png
+diagram.png
+diagram_screenshot.png
